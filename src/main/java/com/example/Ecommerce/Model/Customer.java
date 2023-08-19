@@ -14,6 +14,7 @@ import java.util.List;
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name="customer")
+@Builder
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +28,7 @@ public class Customer {
     @Column(unique = true)
     String mobNo;
 
+    @Enumerated(value = EnumType.STRING)
     Gender gender;
 
     @OneToOne(mappedBy = "customer",cascade = CascadeType.ALL)

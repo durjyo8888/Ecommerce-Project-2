@@ -3,10 +3,7 @@ package com.example.Ecommerce.Model;
 import com.example.Ecommerce.Enum.ProductCategory;
 import com.example.Ecommerce.Enum.ProductStatus;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.ArrayList;
@@ -18,6 +15,7 @@ import java.util.List;
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name="product")
+@Builder
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,8 +27,10 @@ public class Product {
 
     int availableQuantity;
 
+    @Enumerated(value = EnumType.STRING)
     ProductCategory category;
 
+    @Enumerated(value = EnumType.STRING)
     ProductStatus productStatus;
 
     @ManyToOne

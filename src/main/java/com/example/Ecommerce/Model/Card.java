@@ -2,11 +2,9 @@ package com.example.Ecommerce.Model;
 
 import com.example.Ecommerce.Enum.CardType;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
 
@@ -16,6 +14,7 @@ import java.util.Date;
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Table(name="card")
+@Builder
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +25,7 @@ public class Card {
 
     int cvv;
 
+    @CreationTimestamp
     Date validTill;
 
     @Enumerated(value = EnumType.STRING)
